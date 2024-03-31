@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.grpc";
+option java_outer_classname = "MessagingProto";
+
+service MessagingService {
+    rpc SendMessage(MessageRequest) returns (MessageResponse);
+    rpc GetMessagesForUser(UserRequest) returns (MessagesResponse);
+}
+
+message MessageRequest {
+    string sender = 1;
+    string recipient = 2;
+    string text = 3;
+}
+
+message UserRequest {
+    string user = 1;
+}
+
+message MessageResponse {
+    string status = 1;
+}
+
+message MessagesResponse {
+    repeated string messages = 1;
+}
